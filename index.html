@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klassic Global Education - Your Study Abroad Journey Starts Here</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Klassic Global Education Advanced Theme Variables (Green + Navy) --- */
+        :root {
+            --primary-green: #4CAF50; /* Main Brand Color (Green) */
+            --dark-green: #388E3C;
+            --primary-blue: #1C2E4A; /* Sub Theme Color (Navy Blue) */
+            --light-blue: #e7ebf1; /* Light background for sections/hero */
+            --text-dark: #333333;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: #ffffff;
+        }
+        
+        /* New Font for Headings (Hero and Section Titles) */
+        h1, h2, .display-3, .display-5 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Preloader CSS Removed */
+
+        .navbar-brand img {
+            height: 40px; /* Adjust as needed */
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand img:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-primary-green {
+            background-color: var(--primary-green);
+            border-color: var(--primary-green);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-green:hover {
+            background-color: var(--dark-green);
+            border-color: var(--dark-green);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px var(--shadow-light);
+        }
+
+        .bg-light-blue {
+            background-color: var(--light-blue);
+        }
+
+        .bg-primary-blue {
+            background-color: var(--primary-blue);
+        }
+
+        .text-primary-green {
+            color: var(--primary-green);
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* UPDATED HERO SECTION DESIGN */
+        .hero-section {
+            background-image: url('banner.jpg'); 
+            background-size: cover;
+            background-position: center;
+            padding: 160px 0; /* Increased padding */
+            color: white;
+            position: relative;
+            /* Added subtle shadow to enhance depth */
+            box-shadow: inset 0 -10px 15px rgba(0, 0, 0, 0.1); 
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* Lighter Gradient Overlay */
+            background: linear-gradient(135deg, rgba(28, 46, 74, 0.85) 0%, rgba(76, 175, 80, 0.5) 100%); 
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content .display-3 {
+            font-size: 3.8rem; /* Larger heading size */
+            line-height: 1.1;
+            font-weight: 900; /* Extra bold */
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        /* END OF UPDATED HERO SECTION DESIGN */
+
+
+        .feature-box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px var(--shadow-light);
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .feature-box:hover {
+            background-color: var(--light-blue);
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+        }
+
+        /* Results Card Style */
+        .results-card {
+            background-color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px var(--shadow-light);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+
+        .results-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .results-card .count-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .results-card p {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+        /* Advanced Navbar Enhancements */
+        .kge-navbar {
+            border-bottom: 3px solid transparent; /* Subtle border transition effect */
+            transition: all 0.4s ease;
+        }
+
+        .kge-navbar .nav-link {
+            color: var(--primary-blue) !important;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 8px !important; /* Space for the underline */
+            margin: 0 5px;
+            transition: color 0.3s ease;
+        }
+
+        .kge-navbar .nav-link:hover,
+        .kge-navbar .nav-link.active {
+            color: var(--primary-green) !important;
+        }
+
+        /* Underline Effect on Hover/Active */
+        .kge-navbar .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary-green);
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        .kge-navbar .nav-link:hover::after,
+        .kge-navbar .nav-link.active::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Dropdown Menu Style */
+        .kge-navbar .dropdown-menu {
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            padding: 10px 0;
+            min-width: 200px;
+        }
+
+        .kge-navbar .dropdown-item {
+            padding: 8px 20px;
+            color: var(--text-dark);
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .kge-navbar .dropdown-item:hover {
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+        }
+        /* End of Advanced Navbar Enhancements */
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm kge-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Klassic Global Education Logo" width="100" height="50"> 
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link active fw-semibold" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Aboutus.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="service.html">Services</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="study-destinations.html">Study Destinations</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact-us.html">Contact</a>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a href="contact-us.html" class="btn btn-primary-green fw-bold px-4 py-2">Start Your Journey</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="container hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-12 text-center">
+                    <p class="text-uppercase fw-semibold mb-2">Unlock Your Global Potential</p>
+                    <h1 class="display-3 fw-bold mb-4">Study Abroad <span class="text-primary-green">Simplified.</span></h1>
+                    <p class="lead mb-4">Guiding you to the world's top universities with personalized care and expert advice.</p>
+                    <a href="contact-us.html" class="btn btn-primary-green btn-lg fw-bold px-5 py-3 shadow-lg">Book a Free Consultation</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5">
+                <p class="text-uppercase fw-bold text-primary-green mb-1">Why Choose Us?</p>
+                <h2 class="display-5 fw-bold">The Klassic Global Advantage</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-box h-100">
+                        <i class="fas fa-graduation-cap fa-3x text-primary-green mb-3"></i>
+                        <h5 class="fw-bold">Expert Counseling</h5>
+                        <p class="text-muted small mb-0">Personalized guidance to match your profile with the best global universities.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-box h-100">
+                        <i class="fas fa-passport fa-3x text-primary-green mb-3"></i>
+                        <h5 class="fw-bold">Visa Success</h5>
+                        <p class="text-muted small mb-0">High visa success rates with comprehensive documentation support.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-box h-100">
+                        <i class="fas fa-globe-asia fa-3x text-primary-green mb-3"></i>
+                        <h5 class="fw-bold">Global Network</h5>
+                        <p class="text-muted small mb-0">Direct partnerships with top universities in Australia, UK, Canada, and more.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-box h-100">
+                        <i class="fas fa-handshake fa-3x text-primary-green mb-3"></i>
+                        <h5 class="fw-bold">Ethical Service</h5>
+                        <p class="text-muted small mb-0">Transparent, honest, and student-first approach in all our dealings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-light-blue">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="about-main.jpg" class="img-fluid rounded-3 shadow-lg" alt="Klassic Global Education Office Placeholder">
+                </div>
+                <div class="col-lg-6">
+                    <p class="text-uppercase fw-bold text-primary-green mb-1">Our Journey</p>
+                    <h2 class="display-5 fw-bold mb-4">Your Trustworthy Partner in Global Education</h2>
+                    <p class="lead text-muted">Since our inception, Klassic Global Education has been dedicated to transforming students' international study dreams into reality.</p>
+                    <p class="text-muted mb-4">We are a team of seasoned professionals, committed to providing personalized and ethical guidance. We understand the complexity of global applications and visa processes, ensuring a smooth and stress-free experience for every student and their family.</p>
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <p class="mb-0 fw-semibold"><i class="fas fa-check-circle text-primary-green me-2"></i> Over 5 Years of Expertise</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0 fw-semibold"><i class="fas fa-check-circle text-primary-green me-2"></i> 98% Visa Success Rate</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0 fw-semibold"><i class="fas fa-check-circle text-primary-green me-2"></i> Partnered with Top Global Unis</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0 fw-semibold"><i class="fas fa-check-circle text-primary-green me-2"></i> Comprehensive Post-Landing Support</p>
+                        </div>
+                    </div>
+                    <a href="Aboutus.html" class="btn btn-primary-green mt-4 fw-bold">Read More About Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5">
+                <p class="text-uppercase fw-bold text-primary-green mb-1">Our Core Services</p>
+                <h2 class="display-5 fw-bold">Everything You Need, Handled.</h2>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 text-center p-3">
+                        <img src="3.png" class="card-img-top rounded-top" alt="University Selection Placeholder">
+                        <div class="card-body">
+                            <i class="fas fa-book-reader fa-3x text-primary-green mb-3"></i>
+                            <h5 class="card-title fw-bold">University Placement</h5>
+                            <p class="card-text text-muted">Identifying the perfect course and university based on your academic profile and career goals.</p>
+                            <a href="service.html" class="text-primary-green fw-semibold text-decoration-none">Learn More <i class="fas fa-chevron-right small ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 text-center p-3">
+                        <img src="2.png" class="card-img-top rounded-top" alt="Visa Documentation Placeholder">
+                        <div class="card-body">
+                            <i class="fas fa-passport fa-3x text-primary-green mb-3"></i>
+                            <h5 class="card-title fw-bold">Visa & Immigration</h5>
+                            <p class="card-text text-muted">Comprehensive guidance on visa requirements and documentation.</p>
+                            <a href="service.html" class="text-primary-green fw-semibold text-decoration-none">Learn More <i class="fas fa-chevron-right small ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 text-center p-3">
+                        <img src="1.png" class="card-img-top rounded-top" alt="Pre-Departure Briefing Placeholder">
+                        <div class="card-body">
+                            <i class="fas fa-plane-departure fa-3x text-primary-green mb-3"></i>
+                            <h5 class="card-title fw-bold">Pre & Post Departure</h5>
+                            <p class="card-text text-muted">In-depth briefings, travel tips, and on-arrival support to ensure a smooth transition.</p>
+                            <a href="service.html" class="text-primary-green fw-semibold text-decoration-none">Learn More <i class="fas fa-chevron-right small ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="service.html" class="btn btn-primary-green btn-lg fw-bold px-5 py-3 shadow">View All Services</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-primary-blue text-white text-center">
+        <div class="container">
+            <h2 class="display-5 fw-bold mb-5">Our Success in Numbers</h2>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="results-card bg-white text-dark">
+                        <span class="count-number" data-target="5000">+</span>
+                        <p>Successful Placements</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="results-card bg-white text-dark">
+                        <span class="count-number" data-target="150">+</span>
+                        <p>Partner Universities</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="results-card bg-white text-dark">
+                        <span class="count-number" data-target="10">+</span>
+                        <p>Study Destinations</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="results-card bg-white text-dark">
+                        <span class="count-number" data-target="98">%</span>
+                        <p>Visa Success Rate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-light-blue">
+        <div class="container">
+            <div class="text-center mb-5">
+                <p class="text-uppercase fw-bold text-primary-green mb-1">Testimonials</p>
+                <h2 class="display-5 fw-bold">What Our Students Say</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="testimonial-card h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://picsum.photos/80/80?random=6" class="rounded-circle me-3" alt="Student 1 Placeholder">
+                            <div>
+                                <h6 class="fw-bold mb-0">Nimali Perera</h6>
+                                <p class="small text-primary-green mb-0">Student, University of Sydney</p>
+                            </div>
+                        </div>
+                        <p class="fst-italic text-muted">"Klassic Global made my dream of studying in Australia a reality. The process was so smooth and easy!"</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-card h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://picsum.photos/80/80?random=7" class="rounded-circle me-3" alt="Student 2 Placeholder">
+                            <div>
+                                <h6 class="fw-bold mb-0">Ayesha Khan</h6>
+                                <p class="small text-primary-green mb-0">Student, University of Toronto</p>
+                            </div>
+                        </div>
+                        <p class="fst-italic text-muted">"Excellent guidance on course selection and visa documentation. I highly recommend their services."</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-card h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://picsum.photos/80/80?random=8" class="rounded-circle me-3" alt="Student 3 Placeholder">
+                            <div>
+                                <h6 class="fw-bold mb-0">Ravi Fernando</h6>
+                                <p class="small text-primary-green mb-0">Student, University of Manchester</p>
+                            </div>
+                        </div>
+                        <p class="fst-italic text-muted">"From applications to UK visa, Klassic Global provided seamless and professional service. Highly recommended!"</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer bg-primary-blue text-white pt-5 pb-4">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4 mb-4">
+                    <a class="navbar-brand mb-3 d-block" href="index.html">
+                        <img src="logo.png" alt="Klassic Global Education Logo" width="120" class="filter-white">
+                    </a>
+                    <p class="small text-white-50">Klassic Global Education is your trusted partner for study abroad counseling, university placement, and visa guidance. Your success is our mission.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="fw-bold mb-3">Quick Links</h5>
+                    <ul class="list-unstyled small">
+                        <li><a href="index.html" class="text-white-50 text-decoration-none mb-2 d-block">Home</a></li>
+                        <li><a href="Aboutus.html" class="text-white-50 text-decoration-none mb-2 d-block">About Us</a></li>
+                        <li><a href="service.html" class="text-white-50 text-decoration-none mb-2 d-block">Our Services</a></li>
+                        <li><a href="study-destinations.html" class="text-white-50 text-decoration-none mb-2 d-block">Destinations</a></li>
+                        <li><a href="contact-us.html" class="text-white-50 text-decoration-none mb-2 d-block">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-5 mb-4">
+                    <h5 class="fw-bold mb-3">Get In Touch</h5>
+                    <ul class="list-unstyled small text-white-50">
+                        <li><i class="fas fa-map-marker-alt me-2 text-primary-green"></i> Main Office, Anuradhapura, Sri Lanka</li>
+                        <li><i class="fas fa-phone me-2 text-primary-green"></i> +94 701 102 103</li>
+                        <li><i class="fas fa-envelope me-2 text-primary-green"></i> Klassicoedu@gmail.com</li>
+                    </ul>
+                    <hr class="my-3 border-light opacity-25">
+                    <h5 class="fw-bold mb-3">Book Your Free Consultation</h5>
+                    <p class="small text-white-50">Ready to take the first step? Book a free consultation with our experts today!</p>
+                    <a href="contact-us.html" class="btn btn-primary-green w-100">Book Appointment</a>
+                </div>
+            </div>
+            <hr class="my-4 border-light opacity-25">
+            <div class="text-center small text-white-50">
+                <p class="mb-0">Copyright © 2025 Klassic Global Education - All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top btn btn-primary-green rounded-circle p-3 shadow-lg" style="position: fixed; bottom: 30px; right: 30px; display: none;">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Back to Top functionality
+            var backToTop = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTop.style.display = 'block';
+                } else {
+                    backToTop.style.display = 'none';
+                }
+            });
+            backToTop.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Counter Animation Script (Existing)
+            const countObservers = new Map();
+            function animateCounter(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const targetElement = entry.target;
+                        // Retrieve the target value, removing any non-digit characters except for the optional '+' or '%' at the end
+                        const target = parseInt(targetElement.getAttribute('data-target').replace(/[^0-9]/g, ''));
+                        const suffix = targetElement.getAttribute('data-target').replace(/[0-9,]/g, ''); 
+                        const duration = 2000; // Animation duration in ms
+                        let startTimestamp = null;
+                        
+                        function updateCount(timestamp) {
+                            if (!startTimestamp) startTimestamp = timestamp;
+                            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                            const currentCount = progress * target;
+                            
+                            // Format the number with commas (e.g., 5,000)
+                            let formattedCount = Math.round(currentCount).toLocaleString();
+
+                            targetElement.textContent = formattedCount + suffix;
+
+                            if (progress < 1) {
+                                requestAnimationFrame(updateCount);
+                            } else {
+                                // Ensure the final value is exactly the target with proper formatting
+                                targetElement.textContent = target.toLocaleString() + suffix; 
+                                observer.unobserve(targetElement);
+                            }
+                        }
+
+                        requestAnimationFrame(updateCount);
+                        observer.unobserve(targetElement); // Stop observing after starting the animation
+                    }
+                });
+            }
+
+            const counterElements = document.querySelectorAll('.count-number');
+            
+            // Setup Intersection Observer for each counter
+            counterElements.forEach(element => {
+                const observer = new IntersectionObserver(animateCounter, {
+                    root: null, // viewport
+                    threshold: 0.5 // trigger when 50% of the element is visible
+                });
+                observer.observe(element);
+                countObservers.set(element, observer);
+            });
+        });
+    </script>
+</body>
+</html>

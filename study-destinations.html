@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations - Klassic Global Education - Global Study Locations</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Klassic Global Education Advanced Theme Variables (Green + Navy) --- */
+        :root {
+            --primary-green: #4CAF50; /* Main Brand Color (Green) */
+            --dark-green: #388E3C;
+            --primary-blue: #1C2E4A; /* Sub Theme Color (Navy Blue) */
+            --light-blue: #e7ebf1; /* Light background for sections/hero */
+            --text-dark: #333333;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: #ffffff;
+        }
+
+        .navbar-brand img {
+            height: 40px; /* Adjust as needed */
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand img:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-primary-green {
+            background-color: var(--primary-green);
+            border-color: var(--primary-green);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-green:hover {
+            background-color: var(--dark-green);
+            border-color: var(--dark-green);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px var(--shadow-light);
+        }
+
+        .bg-light-blue {
+            background-color: var(--light-blue);
+        }
+
+        .bg-primary-blue {
+            background-color: var(--primary-blue);
+        }
+
+        .text-primary-green {
+            color: var(--primary-green);
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .hero-banner {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            /* --- Added Background Image Styles --- */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(28, 46, 74, 0.7); /* Dark overlay for text readability */
+            z-index: -1;
+        }
+        /* --- End Background Image Styles --- */
+        
+        .destination-card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .destination-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .destination-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .card-img-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        /* Advanced Navbar Enhancements */
+        .kge-navbar {
+            border-bottom: 3px solid transparent; /* Subtle border transition effect */
+            transition: all 0.4s ease;
+        }
+
+        .kge-navbar .nav-link {
+            color: var(--primary-blue) !important;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 8px !important; /* Space for the underline */
+            margin: 0 5px;
+            transition: color 0.3s ease;
+        }
+
+        .kge-navbar .nav-link:hover,
+        .kge-navbar .nav-link.active {
+            color: var(--primary-green) !important;
+        }
+
+        /* Underline Effect on Hover/Active */
+        .kge-navbar .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary-green);
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        .kge-navbar .nav-link:hover::after,
+        .kge-navbar .nav-link.active::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Dropdown Menu Style */
+        .kge-navbar .dropdown-menu {
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            padding: 10px 0;
+            min-width: 200px;
+        }
+
+        .kge-navbar .dropdown-item {
+            padding: 8px 20px;
+            color: var(--text-dark);
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .kge-navbar .dropdown-item:hover {
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+        }
+        /* End of Advanced Navbar Enhancements */
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm kge-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Klassic Global Education Logo" width="100" height="50"> 
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Aboutus.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="service.html">Services</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link active fw-semibold" aria-current="page" href="study-destinations.html">Study Destinations</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact-us.html">Contact</a>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a href="contact-us.html" class="btn btn-primary-green fw-bold px-4 py-2">Start Your Journey</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="hero-banner" style="background-image: url('https://picsum.photos/1920/1080?random=3');">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">Top Global Study Destinations</h1>
+            <p class="lead text-white-50">Explore a world of opportunities with our preferred study locations.</p>
+        </div>
+    </header>
+
+    <section class="section-padding bg-light-blue">
+        <div class="container">
+            <div class="text-center mb-5">
+                <p class="text-uppercase fw-bold text-primary-green mb-1">Where Will You Study?</p>
+                <h2 class="display-5 fw-bold">Our Popular Study Locations</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <a href="australia-universities.html" class="text-decoration-none">
+                        <div class="destination-card h-100 card border-0 shadow">
+                            <img src="aus.jpg" class="card-img-top" alt="Australia Placeholder">
+                            <div class="card-body text-dark">
+                                <h5 class="card-title fw-bold">Australia <i class="fas fa-university small ms-2 text-primary-green"></i></h5>
+                                <p class="card-text small mb-1">World-class universities, post-study work opportunities, and a vibrant lifestyle.</p>
+                                <p class="card-text small text-primary-green fw-semibold mb-0">View Universities</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <a href="new-zealand-universities.html" class="text-decoration-none">
+                        <div class="destination-card h-100 card border-0 shadow">
+                            <img src="nz.jpg" class="card-img-top" alt="New Zealand Placeholder">
+                            <div class="card-body text-dark">
+                                <h5 class="card-title fw-bold">New Zealand <i class="fas fa-university small ms-2 text-primary-green"></i></h5>
+                                <p class="card-text small mb-1">A safe, beautiful country with excellent education and strong career prospects.</p>
+                                <p class="card-text small text-primary-green fw-semibold mb-0">View Universities</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <a href="uk-universities.html" class="text-decoration-none">
+                        <div class="destination-card h-100 card border-0 shadow">
+                            <img src="uk.jpg" class="card-img-top" alt="United Kingdom Placeholder">
+                            <div class="card-body text-dark">
+                                <h5 class="card-title fw-bold">United Kingdom <i class="fas fa-university small ms-2 text-primary-green"></i></h5>
+                                <p class="card-text small mb-1">Home to some of the oldest and most prestigious institutions globally.</p>
+                                <p class="card-text small text-primary-green fw-semibold mb-0">View Universities</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <a href="canada-universities.html" class="text-decoration-none">
+                        <div class="destination-card h-100 card border-0 shadow">
+                            <img src="can.jpg" class="card-img-top" alt="Canada Placeholder">
+                            <div class="card-body text-dark">
+                                <h5 class="card-title fw-bold">Canada <i class="fas fa-university small ms-2 text-primary-green"></i></h5>
+                                <p class="card-text small mb-1">High quality of life, multicultural environment, and clear PR pathways.</p>
+                                <p class="card-text small text-primary-green fw-semibold mb-0">View Universities</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <a href="singapore-universities.html" class="text-decoration-none">
+                        <div class="destination-card h-100 card border-0 shadow">
+                            <img src="sin.jpg" class="card-img-top" alt="Singapore Placeholder">
+                            <div class="card-body text-dark">
+                                <h5 class="card-title fw-bold">Singapore <i class="fas fa-university small ms-2 text-primary-green"></i></h5>
+                                <p class="card-text small mb-1">A leading global hub for innovation and business with top-ranked universities.</p>
+                                <p class="card-text small text-primary-green fw-semibold mb-0">View Universities</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <a href="malaysia-universities.html" class="text-decoration-none">
+                        <div class="destination-card h-100 card border-0 shadow">
+                            <img src="mal.jpg" class="card-img-top" alt="Malaysia Placeholder">
+                            <div class="card-body text-dark">
+                                <h5 class="card-title fw-bold">Malaysia <i class="fas fa-university small ms-2 text-primary-green"></i></h5>
+                                <p class="card-text small mb-1">Offers affordable, high-quality education in a multicultural environment.</p>
+                                <p class="card-text small text-primary-green fw-semibold mb-0">View Universities</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <a href="europe-universities.html" class="text-decoration-none">
+                        <div class="destination-card h-100 card border-0 shadow">
+                            <img src="eur.jpg" class="card-img-top" alt="Europe Placeholder">
+                            <div class="card-body text-dark">
+                                <h5 class="card-title fw-bold">Europe <i class="fas fa-university small ms-2 text-primary-green"></i></h5>
+                                <p class="card-text small mb-1">Access to cutting-edge research and diverse cultural experiences (Germany, France, etc.).</p>
+                                <p class="card-text small text-primary-green fw-semibold mb-0">View Universities</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <a href="china-universities.html" class="text-decoration-none">
+                        <div class="destination-card h-100 card border-0 shadow">
+                            <img src="china.jpg" class="card-img-top" alt="China Placeholder">
+                            <div class="card-body text-dark">
+                                <h5 class="card-title fw-bold">China <i class="fas fa-university small ms-2 text-primary-green"></i></h5>
+                                <p class="card-text small mb-1">Home to major research universities and a rapidly growing economy.</p>
+                                <p class="card-text small text-primary-green fw-semibold mb-0">View Universities</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <a href="south-korea-universities.html" class="text-decoration-none">
+                        <div class="destination-card h-100 card border-0 shadow">
+                            <img src="south.jpg" class="card-img-top" alt="South Korea Placeholder">
+                            <div class="card-body text-dark">
+                                <h5 class="card-title fw-bold">South Korea <i class="fas fa-university small ms-2 text-primary-green"></i></h5>
+                                <p class="card-text small mb-1">A leader in technology, with strong programs in engineering and IT.</p>
+                                <p class="card-text small text-primary-green fw-semibold mb-0">View Universities</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="contact-us.html" class="btn btn-primary-green btn-lg fw-bold px-5 py-3 shadow">Talk to an Expert about Destinations</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer bg-primary-blue text-white pt-5 pb-4">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4 mb-4">
+                    <a class="navbar-brand mb-3 d-block" href="index.html">
+                        <img src="logo.png" alt="Klassic Global Education Logo" width="120" class="filter-white">
+                    </a>
+                    <p class="small text-white-50">Klassic Global Education is your trusted partner for study abroad counseling, university placement, and visa guidance. Your success is our mission.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="fw-bold mb-3">Quick Links</h5>
+                    <ul class="list-unstyled small">
+                        <li><a href="index.html" class="text-white-50 text-decoration-none mb-2 d-block">Home</a></li>
+                        <li><a href="Aboutus.html" class="text-white-50 text-decoration-none mb-2 d-block">About Us</a></li>
+                        <li><a href="service.html" class="text-white-50 text-decoration-none mb-2 d-block">Our Services</a></li>
+                        <li><a href="study-destinations.html" class="text-white-50 text-decoration-none mb-2 d-block">Destinations</a></li>
+                        <li><a href="contact-us.html" class="text-white-50 text-decoration-none mb-2 d-block">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-5 mb-4">
+                    <h5 class="fw-bold mb-3">Get In Touch</h5>
+                    <ul class="list-unstyled small text-white-50">
+                        <li><i class="fas fa-map-marker-alt me-2 text-primary-green"></i> Main Office, Anuradhapura, Sri Lanka</li>
+                        <li><i class="fas fa-phone me-2 text-primary-green"></i> +94 701 102 103</li>
+                        <li><i class="fas fa-envelope me-2 text-primary-green"></i> Klassicoedu@gmail.com</li>
+                    </ul>
+                    <hr class="my-3 border-light opacity-25">
+                    <h5 class="fw-bold mb-3">Book Your Free Consultation</h5>
+                    <p class="small text-white-50">Ready to take the first step? Book a free consultation with our experts today!</p>
+                    <a href="contact-us.html" class="btn btn-primary-green w-100">Book Appointment</a>
+                </div>
+            </div>
+            <hr class="my-4 border-light opacity-25">
+            <div class="text-center small text-white-50">
+                <p class="mb-0">Copyright © 2025 Klassic Global Education - All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top btn btn-primary-green rounded-circle p-3 shadow-lg" style="position: fixed; bottom: 30px; right: 30px; display: none;">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var backToTop = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTop.style.display = 'block';
+                } else {
+                    backToTop.style.display = 'none';
+                }
+            });
+            backToTop.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

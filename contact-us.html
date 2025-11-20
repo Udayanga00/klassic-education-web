@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Klassic Global Education - Get in Touch</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Klassic Global Education Advanced Theme Variables (Green + Navy) --- */
+        :root {
+            --primary-green: #4CAF50; /* Main Brand Color (Green) */
+            --dark-green: #388E3C;
+            --primary-blue: #1C2E4A; /* Sub Theme Color (Navy Blue) */
+            --light-blue: #e7ebf1; /* Light background for sections/hero */
+            --text-dark: #333333;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --whatsapp-green: #25D366;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: #ffffff;
+        }
+
+        .navbar-brand img {
+            height: 40px; /* Adjust as needed */
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand img:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-primary-green {
+            background-color: var(--primary-green);
+            border-color: var(--primary-green);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-green:hover {
+            background-color: var(--dark-green);
+            border-color: var(--dark-green);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px var(--shadow-light);
+        }
+
+        .bg-light-blue {
+            background-color: var(--light-blue);
+        }
+
+        .bg-primary-blue {
+            background-color: var(--primary-blue);
+        }
+
+        .text-primary-green {
+            color: var(--primary-green);
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .hero-banner {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            /* Added background image styles */
+            background-image: url('https://picsum.photos/1920/1080?random=1'); 
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(28, 46, 74, 0.7); /* Dark overlay for text readability */
+            z-index: -1;
+        }
+        /* End Background Image Styles */
+
+        .contact-info-box {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid var(--primary-green);
+            transition: box-shadow 0.3s ease;
+            margin-bottom: 20px; /* Added margin for spacing */
+        }
+
+        .contact-info-box:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-form-card {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .info-icon {
+            color: var(--primary-green);
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-fab {
+            position: fixed;
+            bottom: 30px;
+            left: 30px; /* Changed from right to left to avoid clash with back-to-top */
+            background-color: var(--whatsapp-green);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .whatsapp-fab:hover {
+            background-color: #128C7E;
+            transform: scale(1.05);
+        }
+
+        .whatsapp-fab i {
+            font-size: 1.5rem;
+            margin-right: 5px;
+        }
+
+        /* Footer Link Styles */ 
+        .footer .list-unstyled li a {
+            display: flex;
+            align-items: center;
+        }
+        .footer .list-unstyled li a:hover {
+            color: var(--primary-green) !important; /* Added hover state for footer links */
+        }
+        .footer .list-unstyled li .fa-angle-right {
+            margin-right: 8px;
+        }
+
+        /* Advanced Navbar Enhancements */
+        .kge-navbar {
+            border-bottom: 3px solid transparent; /* Subtle border transition effect */
+            transition: all 0.4s ease;
+        }
+
+        .kge-navbar .nav-link {
+            color: var(--primary-blue) !important;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 8px !important; /* Space for the underline */
+            margin: 0 5px;
+            transition: color 0.3s ease;
+        }
+
+        .kge-navbar .nav-link:hover,
+        .kge-navbar .nav-link.active {
+            color: var(--primary-green) !important;
+        }
+
+        /* Underline Effect on Hover/Active */
+        .kge-navbar .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary-green);
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        .kge-navbar .nav-link:hover::after,
+        .kge-navbar .nav-link.active::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Dropdown Menu Style */
+        .kge-navbar .dropdown-menu {
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            padding: 10px 0;
+            min-width: 200px;
+        }
+
+        .kge-navbar .dropdown-item {
+            padding: 8px 20px;
+            color: var(--text-dark);
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .kge-navbar .dropdown-item:hover {
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+        }
+        /* End of Advanced Navbar Enhancements */
+    </style>
+</head>
+<body>
+    
+    <a href="https://wa.me/94701102103" target="_blank" class="whatsapp-fab">
+        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+    </a>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm kge-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Klassic Global Education Logo" width="100" height="50"> 
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Aboutus.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="service.html">Services</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="study-destinations.html">Study Destinations</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link active fw-semibold" aria-current="page" href="contact-us.html">Contact</a>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a href="contact-us.html" class="btn btn-primary-green fw-bold px-4 py-2">Start Your Journey</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-banner">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">Get in Touch</h1>
+            <p class="lead text-white-50">We're ready to answer your questions and guide your next steps.</p>
+        </div>
+    </header>
+
+    <section class="section-padding bg-light-blue">
+        <div class="container">
+            <div class="text-center mb-5">
+                <p class="text-uppercase fw-bold text-primary-green mb-1">We Are Here For You</p>
+                <h2 class="display-5 fw-bold">Contact Our Expert Team</h2>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-10">
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="contact-info-box text-center">
+                                <i class="fas fa-map-marker-alt fa-3x info-icon mb-3"></i>
+                                <h5 class="fw-bold">Our Location</h5>
+                                <p class="mb-0 text-muted">Main Office, Anuradhapura,<br> Sri Lanka</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="contact-info-box text-center">
+                                <i class="fas fa-phone fa-3x info-icon mb-3"></i>
+                                <h5 class="fw-bold">Call Us</h5>
+                                <p class="mb-0 text-muted">+94 701 102 103<br> (General Inquiries)</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="contact-info-box text-center">
+                                <i class="fas fa-envelope fa-3x info-icon mb-3"></i>
+                                <h5 class="fw-bold">Email Us</h5>
+                                <p class="mb-0 text-muted">Klassicoedu@gmail.com<br> (For Support)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5">
+                <p class="text-uppercase fw-bold text-primary-green mb-1">Book Your Free Assessment</p>
+                <h2 class="display-5 fw-bold">Send Us A Message (WhatsApp Direct)</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-form-card">
+                        <p class="text-muted text-center mb-4">Fill out the form below. When you click 'Send via WhatsApp', your inquiry will be sent directly to our team for a fast response. </p>
+                        <form id="whatsappForm" class="row g-3">
+                            <div class="col-md-6">
+                                <label for="name" class="form-label fw-semibold">Your Full Name*</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="age" class="form-label fw-semibold">Your Age*</label>
+                                <input type="number" class="form-control" id="age" name="age" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label fw-semibold">Contact No*</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label fw-semibold">Email (Optional)</label>
+                                <input type="email" class="form-control" id="email" name="email">
+                            </div>
+                            <div class="col-12">
+                                <label for="address" class="form-label fw-semibold">Address (Optional)</label>
+                                <input type="text" class="form-control" id="address" name="address">
+                            </div>
+                            <div class="col-12">
+                                <label for="destination" class="form-label fw-semibold">Preferred Study Destination*</label>
+                                <select class="form-select" id="destination" name="destination" required>
+                                    <option selected disabled value="">Choose...</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="UK">United Kingdom</option>
+                                    <option value="Canada">Canada</option>
+                                    <option value="New Zealand">New Zealand</option>
+                                    <option value="Singapore">Singapore</option>
+                                    <option value="Malaysia">Malaysia</option>
+                                    <option value="China">China</option>
+                                    <option value="South Korea">South Korea</option>
+                                    <option value="Europe">Europe (Germany, France, etc.)</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label for="message" class="form-label fw-semibold">Message/Study Plans (Optional)</label>
+                                <textarea class="form-control" id="message" name="message" rows="4"></textarea>
+                            </div>
+                            <div class="col-12 text-center mt-4">
+                                <button type="submit" class="btn btn-primary-green btn-lg fw-bold px-5 py-3 shadow-lg w-100">
+                                    <i class="fab fa-whatsapp me-2"></i> Send Inquiry via WhatsApp
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer bg-primary-blue text-white pt-5 pb-4">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4 mb-4">
+                    <a class="navbar-brand mb-3 d-block" href="index.html">
+                        <img src="logo.png" alt="Klassic Global Education Logo" width="120" class="filter-white">
+                    </a>
+                    <p class="small text-white-50">Klassic Global Education is your trusted partner for study abroad counseling, university placement, and visa guidance. Your success is our mission.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="fw-bold mb-3">Quick Links</h5>
+                    <ul class="list-unstyled small">
+                        <li><a href="index.html" class="text-white-50 text-decoration-none mb-2 d-block">Home</a></li>
+                        <li><a href="Aboutus.html" class="text-white-50 text-decoration-none mb-2 d-block">About Us</a></li>
+                        <li><a href="service.html" class="text-white-50 text-decoration-none mb-2 d-block">Our Services</a></li>
+                        <li><a href="study-destinations.html" class="text-white-50 text-decoration-none mb-2 d-block">Destinations</a></li>
+                        <li><a href="contact-us.html" class="text-white-50 text-decoration-none mb-2 d-block">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-5 mb-4">
+                    <h5 class="fw-bold mb-3">Get In Touch</h5>
+                    <ul class="list-unstyled small text-white-50">
+                        <li><i class="fas fa-map-marker-alt me-2 text-primary-green"></i> Main Office, Anuradhapura, Sri Lanka</li>
+                        <li><i class="fas fa-phone me-2 text-primary-green"></i> +94 701 102 103</li>
+                        <li><i class="fas fa-envelope me-2 text-primary-green"></i> Klassicoedu@gmail.com</li>
+                    </ul>
+                    <hr class="my-3 border-light opacity-25">
+                    <h5 class="fw-bold mb-3">Book Your Free Consultation</h5>
+                    <p class="small text-white-50">Ready to take the first step? Book a free consultation with our experts today!</p>
+                    <a href="contact-us.html" class="btn btn-primary-green w-100">Book Appointment</a>
+                </div>
+            </div>
+            <hr class="my-4 border-light opacity-25">
+            <div class="text-center small text-white-50">
+                <p class="mb-0">Copyright © 2025 Klassic Global Education - All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top btn btn-primary-green rounded-circle p-3 shadow-lg" style="position: fixed; bottom: 30px; right: 30px; display: none;">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Back to Top functionality
+            var backToTop = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTop.style.display = 'block';
+                } else {
+                    backToTop.style.display = 'none';
+                }
+            });
+            backToTop.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // WhatsApp Form Logic
+            const form = document.getElementById('whatsappForm');
+            const whatsappNumber = '94701102103'; // Replace with your WhatsApp number including country code
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // Prevent default form submission
+
+                const name = document.getElementById('name').value.trim();
+                const age = document.getElementById('age').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const address = document.getElementById('address').value.trim();
+                const destination = document.getElementById('destination').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                // Simple validation (Bootstrap's 'required' handles most)
+                if (!name || !age || !phone || !destination) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+
+                // Construct the pre-filled message (Use encodeURIComponent to handle spaces and special characters)
+                const prefilledMessage = `*New Student Inquiry - Klassic Global Education*\n\n` +
+                                         `*Name:* ${name}\n` +
+                                         `*Age:* ${age}\n` +
+                                         `*Contact No:* ${phone}\n` +
+                                         `*Email:* ${email || 'N/A'}\n` +
+                                         `*Address:* ${address || 'N/A'}\n` +
+                                         `*Study Destination:* ${destination}\n\n` +
+                                         `*Message/Plans:*\n${message || 'N/A'}`;
+
+                // Construct the final WhatsApp URL
+                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(prefilledMessage)}`;
+                
+                // Open the WhatsApp chat link in a new tab
+                window.open(whatsappURL, '_blank');
+
+                // The form is generally NOT cleared here because the user might need to retry if WhatsApp fails to open/send.
+                // form.reset(); 
+            });
+        });
+    </script>
+</body>
+</html>
